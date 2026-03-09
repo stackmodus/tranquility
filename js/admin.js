@@ -1,24 +1,15 @@
 // ===== Login Gate =====
-const ADMIN_USER_HASH = '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918';
-const ADMIN_PASS_HASH = '36c801174c3dc8486a9054e61fb7b394f682995a6f85f2651fc684983719dae1';
+// ===== Login Gate =====
+const ADMIN_USER = 'admin';
+const ADMIN_PASS = 'tranquility2026';
 const AUTH_KEY = 'tranquility_admin_auth';
 
-async function hashString(str) {
-  const encoder = new TextEncoder();
-  const data = encoder.encode(str);
-  const hashBuffer = await crypto.subtle.digest('SHA-256', data);
-  const hashArray = Array.from(new Uint8Array(hashBuffer));
-  return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
-}
-
-async function handleLogin(e) {
+function handleLogin(e) {
   e.preventDefault();
-  const username = document.getElementById('loginUsername').value;
-  const password = document.getElementById('loginPassword').value;
-  const userHash = await hashString(username);
-  const passHash = await hashString(password);
+  var username = document.getElementById('loginUsername').value;
+  var password = document.getElementById('loginPassword').value;
 
-  if (userHash === ADMIN_USER_HASH && passHash === ADMIN_PASS_HASH) {
+  if (username === ADMIN_USER && password === ADMIN_PASS) {
     sessionStorage.setItem(AUTH_KEY, 'true');
     document.getElementById('loginOverlay').classList.add('hidden');
     document.getElementById('adminLayout').style.display = '';
@@ -27,6 +18,7 @@ async function handleLogin(e) {
     document.getElementById('loginPassword').value = '';
     document.getElementById('loginUsername').focus();
   }
+  return false;
 }
 
 // Check if already authenticated this session
