@@ -36,8 +36,8 @@ const DEFAULTS = {
     btnPrimary: "Start Your Recovery",
     btnPhone: "Call Us: +254 721 287624",
     phone: "+254721287624",
-    stat1Num: "500+", stat1Label: "Lives Transformed",
-    stat2Num: "10+", stat2Label: "Years of Service",
+    stat1Num: "24/7", stat1Label: "Support Available",
+    stat2Num: "100%", stat2Label: "Commitment to Care",
     stat3Num: "92%", stat3Label: "Recovery Rate"
   },
   about: {
@@ -81,7 +81,7 @@ const DEFAULTS = {
     heading: "Meet the Team",
     intro: "Dedicated professionals committed to guiding you through every step of your recovery journey.",
     members: [
-      { initials: "DA", name: "Dr. Amina Wanjiku", role: "Medical Director & Psychiatrist", bio: "15+ years of experience in addiction medicine and psychiatric care across East Africa." },
+      { initials: "DA", name: "Dr. Amina Wanjiku", role: "Medical Director & Psychiatrist", bio: "Extensive experience in addiction medicine and psychiatric care across East Africa." },
       { initials: "JO", name: "James Ochieng", role: "Head of Counselling", bio: "Certified addiction counsellor specialising in CBT, trauma therapy, and family systems." },
       { initials: "GN", name: "Grace Njeri", role: "Clinical Psychologist", bio: "Expert in co-occurring disorders, providing integrated treatment for addiction and mental health." },
       { initials: "PK", name: "Peter Kamau", role: "Programme Coordinator", bio: "Oversees daily operations and ensures each client receives personalised, compassionate care." }
@@ -89,11 +89,11 @@ const DEFAULTS = {
   },
   testimonials: {
     tag: "Success Stories",
-    heading: "Lives Transformed",
+    heading: "Our Promise",
     items: [
-      { text: "Tranquility gave me back my life. After years of struggling with alcohol addiction, the team here helped me find the strength I didn't know I had. I've been sober for three years now.", author: "Michael K.", label: "Alumni, 2023" },
+      { text: "We believe in a future where everyone struggling with addiction can find the strength they need. Tranquility is built on that promise.", author: "Michael K.", label: "Our Promise" },
       { text: "The family programme was a game-changer for us. We learned how to support our son's recovery while healing our own wounds. The staff truly cares about every family member.", author: "Sarah M.", label: "Family Member" },
-      { text: "I was sceptical at first, but the holistic approach at Tranquility addressed issues I didn't even realise I had. The aftercare support keeps me accountable and connected.", author: "David O.", label: "Alumni, 2024" }
+      { text: "Our holistic approach is designed to address issues you might not even realise you have. With dedicated aftercare support, we'll keep you accountable and connected.", author: "David O.", label: "Our Approach" }
     ]
   },
   contact: {
@@ -124,7 +124,7 @@ const DEFAULTS = {
     title: "Tranquility Rehab Centre | Recovery & Healing in Kenya",
     description: "Tranquility Rehab Centre offers compassionate addiction recovery and mental health treatment in a serene Kenyan setting. Begin your journey to healing today.",
     logoText: "Tranquility Rehab Centre",
-    footerText: "The first rehabilitation centre in Trans Nzoia County, providing compassionate, evidence-based addiction recovery and mental health treatment since 2014.",
+    footerText: "The first rehabilitation centre in Trans Nzoia County, dedicated to compassionate, evidence-based addiction recovery and mental health treatment.",
     copyright: "2026"
   }
 };
