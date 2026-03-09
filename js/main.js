@@ -290,17 +290,20 @@ const mobileInstallBtn = document.getElementById('mobileInstallBtn');
 const mobileInstallClose = document.getElementById('mobileInstallClose');
 const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone;
 const bannerDismissed = sessionStorage.getItem('install_banner_dismissed');
+const isIos = /iphone|ipad|ipod/i.test(navigator.userAgent);
+const isMobile = /android|iphone|ipad|ipod|mobile/i.test(navigator.userAgent);
 
+// Capture beforeinstallprompt for Android/Chrome
 window.addEventListener('beforeinstallprompt', function(e) {
   e.preventDefault();
   deferredPrompt = e;
-  // Show desktop install button
   if (installBtn) installBtn.style.display = '';
-  // Show mobile install banner (if not dismissed this session)
-  if (mobileBanner && !bannerDismissed && !isStandalone) {
-    setTimeout(function() { mobileBanner.classList.add('show'); }, 1500);
-  }
 });
+
+// Show mobile banner on load for all mobile users (not just Android)
+if (isMobile && !isStandalone && !bannerDismissed && mobileBanner) {
+  setTimeout(function() { mobileBanner.classList.add('show'); }, 1500);
+}
 
 // Desktop install button click
 if (installBtn) {
@@ -319,13 +322,30 @@ if (installBtn) {
 // Mobile install button click
 if (mobileInstallBtn) {
   mobileInstallBtn.addEventListener('click', function() {
-    if (!deferredPrompt) return;
-    deferredPrompt.prompt();
-    deferredPrompt.userChoice.then(function() {
-      deferredPrompt = null;
+    // Android: use native prompt
+    if (deferredPrompt) {
+      deferredPrompt.prompt();
+      deferredPrompt.userChoice.then(function() {
+        deferredPrompt = null;
+        if (mobileBanner) mobileBanner.classList.remove('show');
+        if (installBtn) installBtn.style.display = 'none';
+      });
+    } else if (isIos) {
+      // iOS: show instructions since there's no native prompt
+      var msg = document.getElementById('iosInstallMsg');
+      if (!msg) {
+        msg = document.createElement('div');
+        msg.id = 'iosInstallMsg';
+        msg.style.cssText = 'position:fixed;bottom:0;left:0;right:0;z-index:10000;background:#1a1a2e;color:#fff;padding:20px 16px;text-align:center;font-size:0.9rem;line-height:1.5;box-shadow:0 -4px 20px rgba(0,0,0,0.3);border-radius:16px 16px 0 0;';
+        msg.innerHTML = '<strong>Install Tranquility App</strong><br>Tap the <span style="font-size:1.2em">&#9757;</span> <b>Share</b> button in Safari,<br>then tap <b>"Add to Home Screen"</b><br><button onclick="this.parentElement.remove()" style="margin-top:12px;padding:8px 24px;background:#4a7c59;color:#fff;border:none;border-radius:50px;font-weight:600;cursor:pointer;">Got it</button>';
+        document.body.appendChild(msg);
+      }
       if (mobileBanner) mobileBanner.classList.remove('show');
-      if (installBtn) installBtn.style.display = 'none';
-    });
+    } else {
+      // Fallback: generic instruction
+      alert('To install: open browser menu (⋮) and tap "Install app" or "Add to Home Screen"');
+      if (mobileBanner) mobileBanner.classList.remove('show');
+    }
   });
 }
 
