@@ -100,7 +100,7 @@ const DEFAULTS = {
     location1: "Tranquility Rehab Centre",
     location2: "Trans Nzoia County",
     location3: "Kenya",
-    person: "Monica Sawe",
+    person: "Mrs. Monica Sawe",
     phone1: "+254 721 287624",
     phone2: "+254 721 287624",
     email: "info@tranquilityrehab.co.ke",
