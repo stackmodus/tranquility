@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin | Tranquility Rehab Centre</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #4a7c59;
+      --primary-dark: #3a6348;
+      --primary-light: #e8f5e9;
+      --text: #161616;
+      --text-secondary: #4f554f;
+      --bg: #f5f7f5;
+      --white: #ffffff;
+      --danger: #c0392b;
+      --danger-light: #fde8e8;
+      --radius: 12px;
+      --shadow: 0 2px 12px rgba(0,0,0,0.06);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Source Sans 3', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* Sidebar */
+    .admin-layout {
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      min-height: 100vh;
+    }
+
+    .sidebar {
+      background: var(--white);
+      border-right: 1px solid #e5e5e5;
+      padding: 24px 0;
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow-y: auto;
+    }
+
+    .sidebar-logo {
+      padding: 0 24px 24px;
+      border-bottom: 1px solid #eee;
+      margin-bottom: 16px;
+    }
+
+    .sidebar-logo h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .sidebar-logo span {
+      font-size: 0.75rem;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 600;
+    }
+
+    .sidebar-nav a {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 24px;
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: all 0.2s;
+      border-left: 3px solid transparent;
+    }
+
+    .sidebar-nav a:hover,
+    .sidebar-nav a.active {
+      background: var(--primary-light);
+      color: var(--primary-dark);
+      border-left-color: var(--primary);
+    }
+
+    .sidebar-nav a .nav-icon {
+      font-size: 1.1rem;
+      width: 24px;
+      text-align: center;
+    }
+
+    .sidebar-actions {
+      padding: 16px 24px;
+      border-top: 1px solid #eee;
+      margin-top: auto;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: var(--white);
+    }
+
+    /* Main content */
+    .main-content {
+      padding: 32px 40px;
+      max-width: 900px;
+    }
+
+    .page-header {
+      margin-bottom: 32px;
+    }
+
+    .page-header h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .page-header p {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+    }
+
+    /* Sections */
+    .edit-section {
+      display: none;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .edit-section.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .card {
+      background: var(--white);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 28px;
+      margin-bottom: 20px;
+      border: 1px solid #eee;
+    }
+
+    .card h3 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid #eee;
+    }
+
+    .form-group {
+      margin-bottom: 18px;
+    }
+
+    .form-group label {
+      display: block;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--text-secondary);
+      margin-bottom: 6px;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      padding: 10px 14px;
+      border: 1.5px solid #dde5dd;
+      border-radius: 8px;
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 0.9rem;
+      color: var(--text);
+      transition: border-color 0.2s;
+      background: #fafbfa;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(74,124,89,0.1);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .form-hint {
+      font-size: 0.75rem;
+      color: #999;
+      margin-top: 4px;
+    }
+
+    /* Repeater items */
+    .repeater-item {
+      background: #fafbfa;
+      border: 1px solid #eee;
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 12px;
+      position: relative;
+    }
+
+    .repeater-item .item-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+
+    .repeater-item .item-header span {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+      font-size: 0.85rem;
+      color: var(--primary);
+    }
+
+    .btn-remove {
+      background: var(--danger-light);
+      color: var(--danger);
+      border: none;
+      padding: 4px 12px;
+      border-radius: 6px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .btn-remove:hover {
+      background: var(--danger);
+      color: white;
+    }
+
+    .btn-add {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--primary-light);
+      color: var(--primary-dark);
+      border: 1px dashed var(--primary);
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 8px;
+      transition: all 0.2s;
+    }
+
+    .btn-add:hover {
+      background: var(--primary);
+      color: white;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-block;
+      padding: 12px 28px;
+      border-radius: 50px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      border: none;
+      text-decoration: none;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-dark);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(74,124,89,0.3);
+    }
+
+    .btn-secondary {
+      background: #eee;
+      color: var(--text);
+    }
+
+    .btn-secondary:hover {
+      background: #ddd;
+    }
+
+    .btn-danger {
+      background: var(--danger-light);
+      color: var(--danger);
+    }
+
+    .btn-danger:hover {
+      background: var(--danger);
+      color: white;
+    }
+
+    .btn-block { display: block; width: 100%; text-align: center; }
+
+    .action-bar {
+      display: flex;
+      gap: 12px;
+      margin-top: 24px;
+      padding-top: 20px;
+      border-top: 1px solid #eee;
+    }
+
+    /* Toast */
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: var(--primary);
+      color: white;
+      padding: 14px 28px;
+      border-radius: 8px;
+      font-weight: 500;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+      transform: translateY(100px);
+      opacity: 0;
+      transition: all 0.3s ease;
+      z-index: 1000;
+    }
+
+    .toast.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    /* Preview link */
+    .preview-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--primary);
+      font-weight: 500;
+      font-size: 0.85rem;
+      text-decoration: none;
+    }
+
+    .preview-link:hover {
+      text-decoration: underline;
+    }
+
+    /* Image preview */
+    .img-preview {
+      width: 100%;
+      max-width: 300px;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-top: 8px;
+      border: 1px solid #eee;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .admin-layout {
+        grid-template-columns: 1fr;
+      }
+      .sidebar {
+        position: fixed;
+        left: -260px;
+        z-index: 100;
+        transition: left 0.3s;
+        height: 100vh;
+      }
+      .sidebar.open { left: 0; }
+      .main-content { padding: 20px; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="admin-layout">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-logo">
+        <span>Admin Panel</span>
+        <h2>Tranquility Rehab</h2>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="#" class="active" data-section="hero">
+          <span class="nav-icon">&#9776;</span> Hero Section
+        </a>
+        <a href="#" data-section="about">
+          <span class="nav-icon">&#9432;</span> About
+        </a>
+        <a href="#" data-section="programs">
+          <span class="nav-icon">&#9874;</span> Programs
+        </a>
+        <a href="#" data-section="whyus">
+          <span class="nav-icon">&#10003;</span> Why Choose Us
+        </a>
+        <a href="#" data-section="team">
+          <span class="nav-icon">&#9786;</span> Team Members
+        </a>
+        <a href="#" data-section="testimonials">
+          <span class="nav-icon">&#10077;</span> Testimonials
+        </a>
+        <a href="#" data-section="contact">
+          <span class="nav-icon">&#9993;</span> Contact Info
+        </a>
+        <a href="#" data-section="images">
+          <span class="nav-icon">&#9638;</span> Images
+        </a>
+        <a href="#" data-section="seo">
+          <span class="nav-icon">&#9881;</span> SEO & Settings
+        </a>
+      </nav>
+      <div class="sidebar-actions">
+        <a href="index.html" class="preview-link" target="_blank">&#8594; View Live Site</a>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <div class="page-header">
+        <h1 id="sectionTitle">Hero Section</h1>
+        <p id="sectionDesc">Edit the main hero banner content</p>
+      </div>
+
+      <!-- HERO -->
+      <div class="edit-section active" id="sec-hero">
+        <div class="card">
+          <h3>Hero Content</h3>
+          <div class="form-group">
+            <label>Badge Text</label>
+            <input type="text" data-field="hero.badge" placeholder="e.g. The First Rehabilitation Centre in Trans Nzoia County">
+          </div>
+          <div class="form-group">
+            <label>Main Heading</label>
+            <input type="text" data-field="hero.heading" placeholder="Your Journey to Healing Begins Here">
+            <p class="form-hint">Wrap text in *asterisks* to highlight it in green (e.g. Your Journey to *Healing* Begins Here)</p>
+          </div>
+          <div class="form-group">
+            <label>Subtitle</label>
+            <textarea data-field="hero.subtitle" rows="2" placeholder="Subtitle text..."></textarea>
+          </div>
+          <div class="form-group">
+            <label>Primary Button Text</label>
+            <input type="text" data-field="hero.btnPrimary" placeholder="Start Your Recovery">
+          </div>
+          <div class="form-group">
+            <label>Phone Button Text</label>
+            <input type="text" data-field="hero.btnPhone" placeholder="Call Us: +254 700 000 000">
+          </div>
+          <div class="form-group">
+            <label>Phone Number (for link)</label>
+            <input type="text" data-field="hero.phone" placeholder="+254700000000">
+          </div>
+        </div>
+        <div class="card">
+          <h3>Statistics</h3>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Stat 1 Number</label>
+              <input type="text" data-field="hero.stat1Num" placeholder="500+">
+            </div>
+            <div class="form-group">
+              <label>Stat 1 Label</label>
+              <input type="text" data-field="hero.stat1Label" placeholder="Lives Transformed">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Stat 2 Number</label>
+              <input type="text" data-field="hero.stat2Num" placeholder="10+">
+            </div>
+            <div class="form-group">
+              <label>Stat 2 Label</label>
+              <input type="text" data-field="hero.stat2Label" placeholder="Years of Service">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Stat 3 Number</label>
+              <input type="text" data-field="hero.stat3Num" placeholder="92%">
+            </div>
+            <div class="form-group">
+              <label>Stat 3 Label</label>
+              <input type="text" data-field="hero.stat3Label" placeholder="Recovery Rate">
+            </div>
+          </div>
+        </div>
+        <div class="action-bar">
+          <button class="btn btn-primary" onclick="saveAll()">Save Changes</button>
+          <button class="btn btn-secondary" onclick="resetSection('hero')">Reset to Default</button>
+        </div>
+      </div>
+
+      <!-- ABOUT -->
+      <div class="edit-section" id="sec-about">
+        <div class="card">
+          <h3>About Section Header</h3>
+          <div class="form-group">
+            <label>Section Tag</label>
+            <input type="text" data-field="about.tag" placeholder="Who We Are">
+          </div>
+          <div class="form-group">
+            <label>Heading</label>
+            <input type="text" data-field="about.heading" placeholder="A Sanctuary for Recovery">
+          </div>
+          <div class="form-group">
+            <label>Introduction Text</label>
+            <textarea data-field="about.intro" rows="4"></textarea>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Mission, Vision & Values</h3>
+          <div class="form-group">
+            <label>Mission Title</label>
+            <input type="text" data-field="about.card1Title" placeholder="Our Mission">
+          </div>
+          <div class="form-group">
+            <label>Mission Text</label>
+            <textarea data-field="about.card1Text" rows="3"></textarea>
+          </div>
+          <div class="form-group">
+            <label>Vision Title</label>
+            <input type="text" data-field="about.card2Title" placeholder="Our Vision">
+          </div>
+          <div class="form-group">
+            <label>Vision Text</label>
+            <textarea data-field="about.card2Text" rows="3"></textarea>
+          </div>
+          <div class="form-group">
+            <label>Values Title</label>
+            <input type="text" data-field="about.card3Title" placeholder="Our Values">
+          </div>
+          <div class="form-group">
+            <label>Values Text</label>
+            <textarea data-field="about.card3Text" rows="3"></textarea>
+          </div>
+        </div>
+        <div class="action-bar">
+          <button class="btn btn-primary" onclick="saveAll()">Save Changes</button>
+          <button class="btn btn-secondary" onclick="resetSection('about')">Reset to Default</button>
+        </div>
+      </div>
+
+      <!-- PROGRAMS -->
+      <div class="edit-section" id="sec-programs">
+        <div class="card">
+          <h3>Programs Header</h3>
+          <div class="form-group">
+            <label>Section Tag</label>
+            <input type="text" data-field="programs.tag" placeholder="What We Offer">
+          </div>
+          <div class="form-group">
+            <label>Heading</label>
+            <input type="text" data-field="programs.heading" placeholder="Treatment Programs">
+          </div>
+          <div class="form-group">
+            <label>Intro Text</label>
+            <textarea data-field="programs.intro" rows="2"></textarea>
+          </div>
+        </div>
+        <div id="programsList"></div>
+        <button class="btn-add" onclick="addProgram()">+ Add Program</button>
+        <div class="action-bar">
+          <button class="btn btn-primary" onclick="saveAll()">Save Changes</button>
+          <button class="btn btn-secondary" onclick="resetSection('programs')">Reset to Default</button>
+        </div>
+      </div>
+
+      <!-- WHY US -->
+      <div class="edit-section" id="sec-whyus">
+        <div class="card">
+          <h3>Why Us Header</h3>
+          <div class="form-group">
+            <label>Section Tag</label>
+            <input type="text" data-field="whyus.tag" placeholder="Why Choose Us">
+          </div>
+          <div class="form-group">
+            <label>Heading</label>
+            <input type="text" data-field="whyus.heading" placeholder="What Sets Us Apart">
+          </div>
+        </div>
+        <div id="whyusList"></div>
+        <button class="btn-add" onclick="addWhyItem()">+ Add Reason</button>
+        <div class="action-bar">
+          <button class="btn btn-primary" onclick="saveAll()">Save Changes</button>
+          <button class="btn btn-secondary" onclick="resetSection('whyus')">Reset to Default</button>
+        </div>
+      </div>
+
+      <!-- TEAM -->
+      <div class="edit-section" id="sec-team">
+        <div class="card">
+          <h3>Team Header</h3>
+          <div class="form-group">
+            <label>Section Tag</label>
+            <input type="text" data-field="team.tag" placeholder="Our Experts">
+          </div>
+          <div class="form-group">
+            <label>Heading</label>
+            <input type="text" data-field="team.heading" placeholder="Meet the Team">
+          </div>
+          <div class="form-group">
+            <label>Intro Text</label>
+            <textarea data-field="team.intro" rows="2"></textarea>
+          </div>
+        </div>
+        <div id="teamList"></div>
+        <button class="btn-add" onclick="addTeamMember()">+ Add Team Member</button>
+        <div class="action-bar">
+          <button class="btn btn-primary" onclick="saveAll()">Save Changes</button>
+          <button class="btn btn-secondary" onclick="resetSection('team')">Reset to Default</button>
+        </div>
+      </div>
+
+      <!-- TESTIMONIALS -->
+      <div class="edit-section" id="sec-testimonials">
+        <div class="card">
+          <h3>Testimonials Header</h3>
+          <div class="form-group">
+            <label>Section Tag</label>
+            <input type="text" data-field="testimonials.tag" placeholder="Success Stories">
+          </div>
+          <div class="form-group">
+            <label>Heading</label>
+            <input type="text" data-field="testimonials.heading" placeholder="Lives Transformed">
+          </div>
+        </div>
+        <div id="testimonialsList"></div>
+        <button class="btn-add" onclick="addTestimonial()">+ Add Testimonial</button>
+        <div class="action-bar">
+          <button class="btn btn-primary" onclick="saveAll()">Save Changes</button>
+          <button class="btn btn-secondary" onclick="resetSection('testimonials')">Reset to Default</button>
+        </div>
+      </div>
+
+      <!-- CONTACT -->
+      <div class="edit-section" id="sec-contact">
+        <div class="card">
+          <h3>Contact Details</h3>
+          <div class="form-group">
+            <label>Location Line 1</label>
+            <input type="text" data-field="contact.location1" placeholder="Tranquility Rehab Centre">
+          </div>
+          <div class="form-group">
+            <label>Location Line 2</label>
+            <input type="text" data-field="contact.location2" placeholder="Trans Nzoia County">
+          </div>
+          <div class="form-group">
+            <label>Location Line 3</label>
+            <input type="text" data-field="contact.location3" placeholder="Kenya">
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Phone 1</label>
+              <input type="text" data-field="contact.phone1" placeholder="+254 700 000 000">
+            </div>
+            <div class="form-group">
+              <label>Phone 2</label>
+              <input type="text" data-field="contact.phone2" placeholder="+254 711 000 000">
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" data-field="contact.email" placeholder="info@tranquilityrehab.co.ke">
+          </div>
+          <div class="form-group">
+            <label>Visiting Hours</label>
+            <textarea data-field="contact.hours" rows="2" placeholder="Saturday & Sunday: 10:00 AM - 4:00 PM&#10;By appointment on weekdays"></textarea>
+          </div>
+        </div>
+        <div class="card">
+          <h3>CTA Section</h3>
+          <div class="form-group">
+            <label>CTA Heading</label>
+            <input type="text" data-field="contact.ctaHeading" placeholder="Take the First Step Today">
+          </div>
+          <div class="form-group">
+            <label>CTA Text</label>
+            <textarea data-field="contact.ctaText" rows="2"></textarea>
+          </div>
+        </div>
+        <div class="action-bar">
+          <button class="btn btn-primary" onclick="saveAll()">Save Changes</button>
+          <button class="btn btn-secondary" onclick="resetSection('contact')">Reset to Default</button>
+        </div>
+      </div>
+
+      <!-- IMAGES -->
+      <div class="edit-section" id="sec-images">
+        <div class="card">
+          <h3>Hero Background Image</h3>
+          <div class="form-group">
+            <label>Image URL</label>
+            <input type="text" data-field="images.heroBg" placeholder="https://images.unsplash.com/...">
+            <img class="img-preview" id="heroPreview" src="" alt="Preview" style="display:none">
+          </div>
+        </div>
+        <div class="card">
+          <h3>About Section Images</h3>
+          <div class="form-group">
+            <label>Image 1 URL</label>
+            <input type="text" data-field="images.about1" placeholder="https://...">
+            <div class="form-group">
+              <label>Image 1 Caption</label>
+              <input type="text" data-field="images.about1Cap" placeholder="The Green Heart of Kenya">
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Image 2 URL</label>
+            <input type="text" data-field="images.about2" placeholder="https://...">
+            <div class="form-group">
+              <label>Image 2 Caption</label>
+              <input type="text" data-field="images.about2Cap" placeholder="Peaceful Surroundings">
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Image 3 URL</label>
+            <input type="text" data-field="images.about3" placeholder="https://...">
+            <div class="form-group">
+              <label>Image 3 Caption</label>
+              <input type="text" data-field="images.about3Cap" placeholder="A Place to Heal">
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Nature Gallery Strip</h3>
+          <div class="form-group">
+            <label>Image 1 URL</label>
+            <input type="text" data-field="images.strip1">
+          </div>
+          <div class="form-group">
+            <label>Image 2 URL</label>
+            <input type="text" data-field="images.strip2">
+          </div>
+          <div class="form-group">
+            <label>Image 3 URL</label>
+            <input type="text" data-field="images.strip3">
+          </div>
+          <div class="form-group">
+            <label>Image 4 URL</label>
+            <input type="text" data-field="images.strip4">
+          </div>
+        </div>
+        <div class="action-bar">
+          <button class="btn btn-primary" onclick="saveAll()">Save Changes</button>
+          <button class="btn btn-secondary" onclick="resetSection('images')">Reset to Default</button>
+        </div>
+      </div>
+
+      <!-- SEO -->
+      <div class="edit-section" id="sec-seo">
+        <div class="card">
+          <h3>Site Settings</h3>
+          <div class="form-group">
+            <label>Site Title</label>
+            <input type="text" data-field="seo.title" placeholder="Tranquility Rehab Centre | Recovery & Healing in Kenya">
+          </div>
+          <div class="form-group">
+            <label>Meta Description</label>
+            <textarea data-field="seo.description" rows="3"></textarea>
+          </div>
+          <div class="form-group">
+            <label>Logo Text</label>
+            <input type="text" data-field="seo.logoText" placeholder="Tranquility Rehab Centre">
+          </div>
+          <div class="form-group">
+            <label>Footer Tagline</label>
+            <textarea data-field="seo.footerText" rows="2"></textarea>
+          </div>
+          <div class="form-group">
+            <label>Copyright Year</label>
+            <input type="text" data-field="seo.copyright" placeholder="2026">
+          </div>
+        </div>
+        <div class="card">
+          <h3>Data Management</h3>
+          <div class="form-group">
+            <label>Export / Import</label>
+            <p class="form-hint" style="margin-bottom:12px">Download all your content as JSON or restore from a backup file.</p>
+            <button class="btn btn-secondary" onclick="exportData()" style="margin-right:8px">Export JSON</button>
+            <button class="btn btn-secondary" onclick="document.getElementById('importFile').click()">Import JSON</button>
+            <input type="file" id="importFile" accept=".json" style="display:none" onchange="importData(event)">
+          </div>
+          <div class="form-group" style="margin-top:20px">
+            <button class="btn btn-danger" onclick="resetAll()">Reset All Content to Defaults</button>
+          </div>
+        </div>
+        <div class="action-bar">
+          <button class="btn btn-primary" onclick="saveAll()">Save Changes</button>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <div class="toast" id="toast">Changes saved successfully!</div>
+
+  <script src="js/admin.js"></script>
+</body>
+</html>
