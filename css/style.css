@@ -49,7 +49,6 @@ body {
   background-color: var(--bg);
   -webkit-font-smoothing: antialiased;
   font-weight: 300;
-  padding-bottom: 72px;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -1450,7 +1449,7 @@ ul {
 
 /* ===== Mobile Bottom Navigation ===== */
 .mobile-bottom-nav {
-  display: flex;
+  display: none;
   position: fixed;
   bottom: 0;
   left: 0;
@@ -1506,6 +1505,19 @@ ul {
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.5px;
+}
+
+.mobile-nav-cta {
+  color: var(--white);
+  background: var(--primary);
+  border-radius: 12px;
+  margin: 4px 2px;
+  padding: 6px 14px;
+}
+
+.mobile-nav-cta.active {
+  color: var(--white);
+  background: var(--primary-dark);
 }
 
 @media (max-width: 768px) {
