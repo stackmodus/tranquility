@@ -1,3 +1,35 @@
+// ===== Login Gate =====
+const ADMIN_PASS_HASH = '36c801174c3dc8486a9054e61fb7b394f682995a6f85f2651fc684983719dae1';
+const AUTH_KEY = 'tranquility_admin_auth';
+
+async function hashPassword(password) {
+  const encoder = new TextEncoder();
+  const data = encoder.encode(password);
+  const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+  const hashArray = Array.from(new Uint8Array(hashBuffer));
+  return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+}
+
+async function handleLogin(e) {
+  e.preventDefault();
+  const password = document.getElementById('loginPassword').value;
+  const hash = await hashPassword(password);
+
+  if (hash === ADMIN_PASS_HASH) {
+    sessionStorage.setItem(AUTH_KEY, 'true');
+    document.getElementById('loginOverlay').classList.add('hidden');
+  } else {
+    document.getElementById('loginError').style.display = 'block';
+    document.getElementById('loginPassword').value = '';
+    document.getElementById('loginPassword').focus();
+  }
+}
+
+// Check if already authenticated this session
+if (sessionStorage.getItem(AUTH_KEY) === 'true') {
+  document.getElementById('loginOverlay').classList.add('hidden');
+}
+
 // ===== Default Content (mirrors index.html) =====
 const DEFAULTS = {
   hero: {
