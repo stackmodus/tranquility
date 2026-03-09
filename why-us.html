@@ -16,10 +16,21 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=4">
+  <link rel="stylesheet" href="css/style.css?v=5">
 </head>
 <body>
   <div class="page-transition" id="pageTransition"></div>
+
+  <!-- Mobile Install Banner -->
+  <div class="mobile-install-banner" id="mobileInstallBanner">
+    <span class="banner-icon">&#9752;</span>
+    <div class="banner-text">
+      <strong>Install Tranquility App</strong>
+      Quick access from your home screen
+    </div>
+    <button class="banner-install-btn" id="mobileInstallBtn">Install</button>
+    <button class="banner-close" id="mobileInstallClose">&times;</button>
+  </div>
 
   <!-- Navigation -->
   <nav class="navbar" id="navbar">
@@ -197,17 +208,6 @@
     </div>
   </footer>
 
-  <!-- Mobile Install Banner -->
-  <div class="mobile-install-banner" id="mobileInstallBanner">
-    <span class="banner-icon">&#9752;</span>
-    <div class="banner-text">
-      <strong>Install Tranquility App</strong>
-      Quick access from your home screen
-    </div>
-    <button class="banner-install-btn" id="mobileInstallBtn">Install</button>
-    <button class="banner-close" id="mobileInstallClose">&times;</button>
-  </div>
-
   <!-- Mobile Bottom Nav -->
   <nav class="mobile-bottom-nav" id="mobileNav">
     <a href="index.html" class="mobile-nav-item">
@@ -236,7 +236,7 @@
     </a>
   </nav>
 
-  <script src="js/main.js?v=4"></script>
+  <script src="js/main.js?v=5"></script>
   <script>
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('/sw.js');
