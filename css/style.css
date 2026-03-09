@@ -1472,11 +1472,9 @@ ul {
   flex-direction: column;
   align-items: center;
   gap: 2px;
-  padding: 6px 4px;
+  padding: 6px 8px;
   text-decoration: none;
   color: var(--text-muted);
-  flex: 1;
-  min-width: 0;
   transition: color 0.2s;
   -webkit-tap-highlight-color: transparent;
   position: relative;
