@@ -307,6 +307,43 @@ document.querySelectorAll(
 });
 
 
+// ===== Animated Stat Counters =====
+window.addEventListener('load', function() {
+  document.querySelectorAll('.stat-number').forEach(function(el) {
+    var text = el.textContent.trim();
+    var match = text.match(/^(\d+)(.*)$/);
+    if (!match) return;
+
+    var target = parseInt(match[1]);
+    var suffix = match[2];
+    var done = false;
+
+    var sObserver = new IntersectionObserver(function(entries) {
+      if (entries[0].isIntersecting && !done) {
+        done = true;
+        sObserver.disconnect();
+
+        var duration = 1500;
+        var start = Date.now();
+        el.textContent = '0' + suffix;
+
+        var timer = setInterval(function() {
+          var elapsed = Date.now() - start;
+          var progress = Math.min(elapsed / duration, 1);
+          var eased = 1 - Math.pow(1 - progress, 3);
+          el.textContent = Math.floor(eased * target) + suffix;
+          if (progress >= 1) {
+            clearInterval(timer);
+            el.textContent = target + suffix;
+          }
+        }, 16);
+      }
+    }, { threshold: 0.3 });
+
+    sObserver.observe(el);
+  });
+});
+
 // ===== Contact Form =====
 const contactForm = document.getElementById('contactForm');
 
