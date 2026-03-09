@@ -36,9 +36,9 @@ const DEFAULTS = {
     btnPrimary: "Start Your Recovery",
     btnPhone: "Call Us: +254 721 287624",
     phone: "+254721287624",
-    stat1Num: "24/7", stat1Label: "Support Available",
-    stat2Num: "100%", stat2Label: "Commitment to Care",
-    stat3Num: "92%", stat3Label: "Recovery Rate"
+    stat1Num: "90+", stat1Label: "Day Treatment Programme",
+    stat2Num: "6+", stat2Label: "Treatment Programmes",
+    stat3Num: "1st", stat3Label: "In Trans Nzoia County"
   },
   about: {
     tag: "Who We Are",
@@ -88,12 +88,12 @@ const DEFAULTS = {
     ]
   },
   testimonials: {
-    tag: "Success Stories",
-    heading: "Our Promise",
+    tag: "What People Are Saying",
+    heading: "Community Voices",
     items: [
-      { text: "We believe in a future where everyone struggling with addiction can find the strength they need. Tranquility is built on that promise.", author: "Michael K.", label: "Our Promise" },
-      { text: "The family programme was a game-changer for us. We learned how to support our son's recovery while healing our own wounds. The staff truly cares about every family member.", author: "Sarah M.", label: "Family Member" },
-      { text: "Our holistic approach is designed to address issues you might not even realise you have. With dedicated aftercare support, we'll keep you accountable and connected.", author: "David O.", label: "Our Approach" }
+      { text: "Trans Nzoia has needed a centre like this for so long. Knowing that families will finally have somewhere local to turn for help gives our whole community hope.", author: "Rev. Joseph M.", label: "Community Leader" },
+      { text: "As a healthcare worker, I've seen too many people travel hundreds of kilometres for rehabilitation. Tranquility opening here will save lives — I truly believe that.", author: "Nurse Grace W.", label: "Healthcare Professional" },
+      { text: "My family has been affected by addiction and we had nowhere close to turn. The fact that a world-class facility is coming to our county is nothing short of a blessing.", author: "Anne K.", label: "Local Resident" }
     ]
   },
   contact: {
