@@ -1,4 +1,4 @@
-const CACHE_NAME = 'tranquility-v2';
+const CACHE_NAME = 'tranquility-v3';
 
 const PRECACHE_URLS = [
   '/',
