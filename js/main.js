@@ -1,3 +1,31 @@
+// ===== Page Transition =====
+window.addEventListener('DOMContentLoaded', function() {
+  var pt = document.getElementById('pageTransition');
+  if (pt) {
+    requestAnimationFrame(function() {
+      pt.classList.add('loaded');
+    });
+  }
+});
+
+// Smooth exit transition on link clicks
+document.addEventListener('click', function(e) {
+  var link = e.target.closest('a');
+  if (!link) return;
+  var href = link.getAttribute('href');
+  if (!href || href.startsWith('#') || href.startsWith('tel:') || href.startsWith('mailto:') || link.target === '_blank') return;
+  if (href.endsWith('.html') || href === '/' || href === '') {
+    e.preventDefault();
+    var pt = document.getElementById('pageTransition');
+    if (pt) {
+      pt.classList.remove('loaded');
+      setTimeout(function() { window.location.href = href; }, 250);
+    } else {
+      window.location.href = href;
+    }
+  }
+});
+
 // ===== CMS: Load content from localStorage =====
 (function loadCmsContent() {
   const STORAGE_KEY = 'tranquility_cms';

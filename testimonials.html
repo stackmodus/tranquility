@@ -6,6 +6,11 @@
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#4a7c59">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <link rel="apple-touch-icon" href="/icons/icon-192.svg">
   <title>Testimonials | Tranquility Rehab Centre</title>
   <meta name="description" content="Hear what the community is saying about Tranquility Rehab Centre, offering compassionate addiction recovery and mental health treatment in Trans Nzoia, Kenya.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,6 +19,7 @@
   <link rel="stylesheet" href="css/style.css?v=2">
 </head>
 <body>
+  <div class="page-transition" id="pageTransition"></div>
 
   <!-- Navigation -->
   <nav class="navbar" id="navbar">
@@ -145,6 +151,35 @@
     </div>
   </footer>
 
+  <!-- Mobile Bottom Nav -->
+  <nav class="mobile-bottom-nav" id="mobileNav">
+    <a href="index.html" class="mobile-nav-item">
+      <span class="mobile-nav-icon">&#9752;</span>
+      <span class="mobile-nav-label">Home</span>
+    </a>
+    <a href="programs.html" class="mobile-nav-item">
+      <span class="mobile-nav-icon">&#9874;</span>
+      <span class="mobile-nav-label">Programs</span>
+    </a>
+    <a href="why-us.html" class="mobile-nav-item">
+      <span class="mobile-nav-icon">&#10003;</span>
+      <span class="mobile-nav-label">Why Us</span>
+    </a>
+    <a href="testimonials.html" class="mobile-nav-item active">
+      <span class="mobile-nav-icon">&#10077;</span>
+      <span class="mobile-nav-label">Voices</span>
+    </a>
+    <a href="contact.html" class="mobile-nav-item">
+      <span class="mobile-nav-icon">&#9993;</span>
+      <span class="mobile-nav-label">Contact</span>
+    </a>
+  </nav>
+
   <script src="js/main.js?v=2"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/sw.js');
+    }
+  </script>
 </body>
 </html>

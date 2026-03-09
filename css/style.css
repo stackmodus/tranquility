@@ -1431,3 +1431,109 @@ ul {
   outline: 2px solid var(--primary);
   outline-offset: 3px;
 }
+
+/* ===== Page Transition ===== */
+.page-transition {
+  position: fixed;
+  inset: 0;
+  background: var(--bg);
+  z-index: 9999;
+  opacity: 1;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.page-transition.loaded {
+  opacity: 0;
+}
+
+/* ===== Mobile Bottom Navigation ===== */
+.mobile-bottom-nav {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-top: 1px solid rgba(74, 124, 89, 0.1);
+  padding: 6px 0 env(safe-area-inset-bottom, 8px);
+  justify-content: space-around;
+  align-items: center;
+  box-shadow: 0 -2px 20px rgba(0, 0, 0, 0.06);
+}
+
+.mobile-nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 6px 12px;
+  text-decoration: none;
+  color: var(--text-muted);
+  transition: color 0.2s;
+  -webkit-tap-highlight-color: transparent;
+  position: relative;
+}
+
+.mobile-nav-item.active {
+  color: var(--primary);
+}
+
+.mobile-nav-item.active::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20px;
+  height: 3px;
+  background: var(--primary);
+  border-radius: 0 0 3px 3px;
+}
+
+.mobile-nav-icon {
+  font-size: 1.2rem;
+  line-height: 1;
+}
+
+.mobile-nav-label {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.6rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+@media (max-width: 768px) {
+  .mobile-bottom-nav {
+    display: flex;
+  }
+
+  /* Add padding to body so content isn't hidden behind bottom nav */
+  body {
+    padding-bottom: 72px;
+  }
+
+  /* Hide desktop nav "Get Help" button on mobile since we have bottom nav */
+  .btn-nav {
+    display: none;
+  }
+}
+
+/* ===== Standalone PWA Mode ===== */
+@media (display-mode: standalone) {
+  .navbar {
+    padding-top: env(safe-area-inset-top, 0);
+  }
+
+  .mobile-bottom-nav {
+    display: flex;
+  }
+
+  body {
+    padding-bottom: 72px;
+  }
+}
