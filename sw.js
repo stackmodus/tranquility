@@ -1,4 +1,4 @@
-const CACHE_NAME = 'tranquility-v5';
+const CACHE_NAME = 'tranquility-v6';
 
 const PRECACHE_URLS = [
   '/',
@@ -35,33 +35,15 @@ self.addEventListener('activate', (event) => {
   );
 });
 
-// Fetch: network-first for navigation, cache-first for static assets
+// Fetch: network-first for all requests (always get latest, fall back to cache offline)
 self.addEventListener('fetch', (event) => {
-  if (event.request.mode === 'navigate') {
-    // Network-first for HTML navigation requests
-    event.respondWith(
-      fetch(event.request)
-        .then((response) => {
-          const clone = response.clone();
-          caches.open(CACHE_NAME).then((cache) => cache.put(event.request, clone));
-          return response;
-        })
-        .catch(() => caches.match(event.request))
-    );
-  } else {
-    // Cache-first for static assets (CSS, JS, fonts, images)
-    event.respondWith(
-      caches.match(event.request)
-        .then((cachedResponse) => {
-          if (cachedResponse) {
-            return cachedResponse;
-          }
-          return fetch(event.request).then((response) => {
-            const clone = response.clone();
-            caches.open(CACHE_NAME).then((cache) => cache.put(event.request, clone));
-            return response;
-          });
-        })
-    );
-  }
+  event.respondWith(
+    fetch(event.request)
+      .then((response) => {
+        const clone = response.clone();
+        caches.open(CACHE_NAME).then((cache) => cache.put(event.request, clone));
+        return response;
+      })
+      .catch(() => caches.match(event.request))
+  );
 });
