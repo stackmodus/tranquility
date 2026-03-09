@@ -309,7 +309,7 @@ document.querySelectorAll(
 // ===== Contact Form =====
 const contactForm = document.getElementById('contactForm');
 
-contactForm.addEventListener('submit', (e) => {
+if (contactForm) contactForm.addEventListener('submit', (e) => {
   e.preventDefault();
 
   const formData = new FormData(contactForm);
@@ -339,6 +339,7 @@ contactForm.addEventListener('submit', (e) => {
 });
 
 function showFormMessage(message, type) {
+  if (!contactForm) return;
   // Remove existing message
   const existing = contactForm.querySelector('.form-message');
   if (existing) existing.remove();
