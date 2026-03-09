@@ -202,7 +202,8 @@
           if (div) {
             const phone1Clean = d.contact.phone1.replace(/\s/g, '');
             const phone2Clean = d.contact.phone2.replace(/\s/g, '');
-            div.innerHTML = `<h4>Phone (24/7 Helpline)</h4><p><a href="tel:${phone1Clean}">${escapeHtml(d.contact.phone1)}</a></p><p><a href="tel:${phone2Clean}">${escapeHtml(d.contact.phone2)}</a></p>`;
+            const personHtml = d.contact.person ? `<p><strong class="contact-person">${escapeHtml(d.contact.person)}</strong></p>` : '';
+            div.innerHTML = `<h4>Phone (24/7 Helpline)</h4>${personHtml}<p><a href="tel:${phone1Clean}">${escapeHtml(d.contact.phone1)}</a></p><p><a href="tel:${phone2Clean}">${escapeHtml(d.contact.phone2)}</a></p>`;
           }
         }
         // Email
