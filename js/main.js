@@ -1,3 +1,62 @@
+// ===== Pull-to-Refresh: Clear Cache & Reload =====
+(function() {
+  var startY = 0;
+  var pulling = false;
+  var indicator = null;
+
+  function createIndicator() {
+    var el = document.createElement('div');
+    el.id = 'pullRefreshIndicator';
+    el.style.cssText = 'position:fixed;top:0;left:0;right:0;z-index:99999;text-align:center;padding:10px;background:linear-gradient(135deg,#4a7c59,#5a9d6b);color:#fff;font-family:Montserrat,sans-serif;font-size:0.8rem;font-weight:600;transform:translateY(-100%);transition:transform 0.3s;';
+    el.textContent = 'Updating...';
+    document.body.appendChild(el);
+    return el;
+  }
+
+  window.addEventListener('touchstart', function(e) {
+    if (window.scrollY === 0) {
+      startY = e.touches[0].clientY;
+      pulling = true;
+    }
+  }, { passive: true });
+
+  window.addEventListener('touchmove', function(e) {
+    if (!pulling) return;
+    var diff = e.touches[0].clientY - startY;
+    if (diff > 80 && window.scrollY === 0) {
+      if (!indicator) indicator = createIndicator();
+      indicator.style.transform = 'translateY(0)';
+      indicator.textContent = 'Release to refresh';
+    }
+  }, { passive: true });
+
+  window.addEventListener('touchend', function() {
+    if (!pulling) return;
+    pulling = false;
+    if (indicator && indicator.style.transform === 'translateY(0)') {
+      indicator.textContent = 'Updating...';
+      // Clear all caches then reload
+      if ('caches' in window) {
+        caches.keys().then(function(names) {
+          return Promise.all(names.map(function(name) { return caches.delete(name); }));
+        }).then(function() {
+          // Unregister service worker so it re-fetches everything
+          if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.getRegistrations().then(function(regs) {
+              regs.forEach(function(r) { r.unregister(); });
+              window.location.reload(true);
+            });
+          } else {
+            window.location.reload(true);
+          }
+        });
+      } else {
+        window.location.reload(true);
+      }
+    }
+  }, { passive: true });
+})();
+
 // ===== Page Transition =====
 window.addEventListener('DOMContentLoaded', function() {
   var pt = document.getElementById('pageTransition');
