@@ -282,6 +282,39 @@ document.addEventListener('click', function(e) {
   }
 })();
 
+// ===== PWA Install Prompt =====
+let deferredPrompt = null;
+const installBtn = document.getElementById('installBtn');
+
+window.addEventListener('beforeinstallprompt', function(e) {
+  e.preventDefault();
+  deferredPrompt = e;
+  // Show install button in desktop nav
+  if (installBtn) installBtn.style.display = '';
+});
+
+if (installBtn) {
+  installBtn.addEventListener('click', function(e) {
+    e.preventDefault();
+    if (!deferredPrompt) return;
+    deferredPrompt.prompt();
+    deferredPrompt.userChoice.then(function(result) {
+      deferredPrompt = null;
+      installBtn.style.display = 'none';
+    });
+  });
+}
+
+window.addEventListener('appinstalled', function() {
+  deferredPrompt = null;
+  if (installBtn) installBtn.style.display = 'none';
+});
+
+// Hide install button if already in standalone mode (already installed)
+if (window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone) {
+  if (installBtn) installBtn.style.display = 'none';
+}
+
 // ===== Mobile Navigation Toggle =====
 const navToggle = document.getElementById('navToggle');
 const navLinks = document.getElementById('navLinks');

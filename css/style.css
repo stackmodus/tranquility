@@ -212,6 +212,24 @@ ul {
   box-shadow: 0 6px 20px rgba(74, 124, 89, 0.35);
 }
 
+.btn-install {
+  padding: 10px 28px;
+  background: linear-gradient(135deg, var(--gold, #c9a84c), #d4b85c);
+  color: var(--white) !important;
+  border-radius: var(--radius-pill);
+  box-shadow: 0 2px 12px rgba(201, 168, 76, 0.3);
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.btn-install:hover {
+  background: linear-gradient(135deg, #d4b85c, var(--gold, #c9a84c));
+  color: var(--white) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(201, 168, 76, 0.4);
+}
+
 /* ===== Navigation ===== */
 .navbar {
   position: fixed;
@@ -1530,8 +1548,8 @@ ul {
     padding-bottom: 72px;
   }
 
-  /* Hide desktop nav "Get Help" button on mobile since we have bottom nav */
-  .btn-nav {
+  /* Hide desktop nav buttons on mobile since we have bottom nav */
+  .btn-nav, .btn-install {
     display: none;
   }
 }
