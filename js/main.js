@@ -306,6 +306,42 @@ document.querySelectorAll(
   observer.observe(el);
 });
 
+// ===== Animated Stat Counters =====
+function animateCounter(el) {
+  const text = el.textContent.trim();
+  const match = text.match(/^(\d+)(.*)$/);
+  if (!match) return;
+  const target = parseInt(match[1]);
+  const suffix = match[2];
+  const duration = 2000;
+  const start = performance.now();
+
+  el.textContent = '0' + suffix;
+
+  function update(now) {
+    const elapsed = now - start;
+    const progress = Math.min(elapsed / duration, 1);
+    const eased = 1 - Math.pow(1 - progress, 3);
+    const current = Math.floor(eased * target);
+    el.textContent = current + suffix;
+    if (progress < 1) requestAnimationFrame(update);
+  }
+  requestAnimationFrame(update);
+}
+
+const statsObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting && !entry.target.dataset.animated) {
+      entry.target.dataset.animated = 'true';
+      animateCounter(entry.target);
+    }
+  });
+}, { threshold: 0.5 });
+
+document.querySelectorAll('.stat-number').forEach(el => {
+  statsObserver.observe(el);
+});
+
 // ===== Contact Form =====
 const contactForm = document.getElementById('contactForm');
 
