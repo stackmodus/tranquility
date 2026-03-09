@@ -34,7 +34,7 @@ const DEFAULTS = {
     heading: "Your Journey to *Healing* Begins Here",
     subtitle: "Pioneering compassionate, evidence-based addiction recovery and mental health treatment in Trans Nzoia, Kenya.",
     btnPrimary: "Start Your Recovery",
-    btnPhone: "Call Monica: +254 721 287624",
+    btnPhone: "Call Us: +254 721 287624",
     phone: "+254721287624",
     stat1Num: "500+", stat1Label: "Lives Transformed",
     stat2Num: "10+", stat2Label: "Years of Service",
