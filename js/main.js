@@ -285,33 +285,66 @@ document.addEventListener('click', function(e) {
 // ===== PWA Install Prompt =====
 let deferredPrompt = null;
 const installBtn = document.getElementById('installBtn');
+const mobileBanner = document.getElementById('mobileInstallBanner');
+const mobileInstallBtn = document.getElementById('mobileInstallBtn');
+const mobileInstallClose = document.getElementById('mobileInstallClose');
+const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone;
+const bannerDismissed = sessionStorage.getItem('install_banner_dismissed');
 
 window.addEventListener('beforeinstallprompt', function(e) {
   e.preventDefault();
   deferredPrompt = e;
-  // Show install button in desktop nav
+  // Show desktop install button
   if (installBtn) installBtn.style.display = '';
+  // Show mobile install banner (if not dismissed this session)
+  if (mobileBanner && !bannerDismissed && !isStandalone) {
+    setTimeout(function() { mobileBanner.classList.add('show'); }, 1500);
+  }
 });
 
+// Desktop install button click
 if (installBtn) {
   installBtn.addEventListener('click', function(e) {
     e.preventDefault();
     if (!deferredPrompt) return;
     deferredPrompt.prompt();
-    deferredPrompt.userChoice.then(function(result) {
+    deferredPrompt.userChoice.then(function() {
       deferredPrompt = null;
       installBtn.style.display = 'none';
+      if (mobileBanner) mobileBanner.classList.remove('show');
     });
+  });
+}
+
+// Mobile install button click
+if (mobileInstallBtn) {
+  mobileInstallBtn.addEventListener('click', function() {
+    if (!deferredPrompt) return;
+    deferredPrompt.prompt();
+    deferredPrompt.userChoice.then(function() {
+      deferredPrompt = null;
+      if (mobileBanner) mobileBanner.classList.remove('show');
+      if (installBtn) installBtn.style.display = 'none';
+    });
+  });
+}
+
+// Mobile banner dismiss
+if (mobileInstallClose) {
+  mobileInstallClose.addEventListener('click', function() {
+    if (mobileBanner) mobileBanner.classList.remove('show');
+    sessionStorage.setItem('install_banner_dismissed', 'true');
   });
 }
 
 window.addEventListener('appinstalled', function() {
   deferredPrompt = null;
   if (installBtn) installBtn.style.display = 'none';
+  if (mobileBanner) mobileBanner.classList.remove('show');
 });
 
-// Hide install button if already in standalone mode (already installed)
-if (window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone) {
+// Hide if already installed
+if (isStandalone) {
   if (installBtn) installBtn.style.display = 'none';
 }
 
