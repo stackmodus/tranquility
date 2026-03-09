@@ -21,6 +21,7 @@ async function handleLogin(e) {
   if (userHash === ADMIN_USER_HASH && passHash === ADMIN_PASS_HASH) {
     sessionStorage.setItem(AUTH_KEY, 'true');
     document.getElementById('loginOverlay').classList.add('hidden');
+    document.getElementById('adminLayout').style.display = '';
   } else {
     document.getElementById('loginError').style.display = 'block';
     document.getElementById('loginPassword').value = '';
@@ -31,6 +32,7 @@ async function handleLogin(e) {
 // Check if already authenticated this session
 if (sessionStorage.getItem(AUTH_KEY) === 'true') {
   document.getElementById('loginOverlay').classList.add('hidden');
+  document.getElementById('adminLayout').style.display = '';
 }
 
 // ===== Default Content (mirrors index.html) =====
