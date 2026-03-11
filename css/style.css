@@ -1793,6 +1793,77 @@ ul {
   }
 }
 
+/* ===== Accent Cards ===== */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.accent-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 28px 24px;
+  border: 1px solid rgba(74, 124, 89, 0.08);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.accent-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary), var(--gold));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
+}
+
+.accent-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 36px rgba(74, 124, 89, 0.15), 0 0 0 1px rgba(74, 124, 89, 0.1);
+  border-color: rgba(74, 124, 89, 0.15);
+}
+
+.accent-card:hover::before {
+  transform: scaleX(1);
+}
+
+.accent-card h3 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 10px;
+  transition: color 0.3s ease;
+}
+
+.accent-card:hover h3 {
+  color: var(--primary);
+}
+
+.accent-card p {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+@media (max-width: 1024px) {
+  .card-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .card-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* ===== Tab Pagination ===== */
 .tab-nav {
   display: flex;
