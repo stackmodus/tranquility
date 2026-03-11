@@ -1,23 +1,25 @@
 {
-  "name": "Tranquility Rehab Centre",
-  "short_name": "Tranquility",
-  "description": "Recovery & Healing in Trans Nzoia, Kenya",
-  "start_url": "/",
+  "name": "Shelter of Hope Rehabilitation Centre",
+  "short_name": "Shelter of Hope",
+  "description": "A Place of Healing, Restoration and New Beginnings. Compassionate drug and substance abuse recovery in Kitale, Kenya.",
+  "start_url": "/index.html",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#4a7c59",
-  "orientation": "portrait-primary",
+  "orientation": "any",
+  "scope": "/",
+  "categories": ["health", "medical"],
   "icons": [
     {
-      "src": "/icons/icon-192.svg",
+      "src": "icons/icon-192.png",
       "sizes": "192x192",
-      "type": "image/svg+xml",
+      "type": "image/png",
       "purpose": "any maskable"
     },
     {
-      "src": "/icons/icon-512.svg",
+      "src": "icons/icon-512.png",
       "sizes": "512x512",
-      "type": "image/svg+xml",
+      "type": "image/png",
       "purpose": "any maskable"
     }
   ]
