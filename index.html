@@ -276,19 +276,7 @@
   <script src="js/main.js?v=9"></script>
   <script>
     if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('/sw.js').then(function(reg) {
-        // Auto-check for updates every page load
-        reg.update();
-        // When a new service worker is waiting, activate it immediately
-        reg.addEventListener('updatefound', function() {
-          var newWorker = reg.installing;
-          newWorker.addEventListener('statechange', function() {
-            if (newWorker.state === 'activated') {
-              window.location.reload();
-            }
-          });
-        });
-      });
+      navigator.serviceWorker.register('/sw.js');
     }
   </script>
 </body>
