@@ -403,7 +403,7 @@ ul {
   position: relative;
   z-index: 2;
   text-align: center;
-  padding: 100px 0 60px;
+  padding: 80px 0 40px;
 }
 
 .hero-badge {
@@ -536,12 +536,12 @@ ul {
 
 /* ===== Sections ===== */
 .section {
-  padding: 48px 0;
+  padding: 36px 0;
 }
 
 .section-header {
   text-align: center;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
 
 .section-tag {
@@ -559,8 +559,8 @@ ul {
 }
 
 .section-header h2 {
-  font-size: clamp(2rem, 3.5vw, 2.8rem);
-  margin-bottom: 20px;
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  margin-bottom: 12px;
   letter-spacing: -0.01em;
 }
 
@@ -597,7 +597,7 @@ ul {
 /* ===== Verse Section ===== */
 .verse-section {
   background: var(--bg);
-  padding: 56px 0;
+  padding: 36px 0;
 }
 
 .verse-block {
@@ -605,7 +605,7 @@ ul {
   margin: 0 auto;
   text-align: center;
   position: relative;
-  padding: 40px 36px;
+  padding: 28px 30px;
   background: linear-gradient(135deg, rgba(232, 245, 233, 0.5), rgba(201, 168, 76, 0.06));
   border-radius: var(--radius);
   border: 1px solid rgba(201, 168, 76, 0.2);
@@ -652,7 +652,7 @@ ul {
 /* ===== Values Section (We Support + Mission/Vision/Motto) ===== */
 .values-section {
   background: var(--bg-sage);
-  padding: 48px 0;
+  padding: 36px 0;
 }
 
 .values-grid {
@@ -740,19 +740,19 @@ ul {
 /* ===== Programmes Section ===== */
 .programmes-section {
   background: var(--bg-cream);
-  padding: 48px 0;
+  padding: 36px 0;
 }
 
 .prog-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
+  gap: 14px;
 }
 
 .prog-card {
   background: var(--white);
   border-radius: var(--radius);
-  padding: 28px 24px;
+  padding: 20px 18px;
   border: 1px solid rgba(74, 124, 89, 0.08);
   transition: box-shadow var(--transition), transform var(--transition);
 }
@@ -763,15 +763,15 @@ ul {
 }
 
 .prog-icon {
-  width: 44px;
-  height: 44px;
+  width: 38px;
+  height: 38px;
   display: flex;
   align-items: center;
   justify-content: center;
   background: var(--bg-sage);
   border-radius: var(--radius-sm);
-  font-size: 1.3rem;
-  margin-bottom: 16px;
+  font-size: 1.1rem;
+  margin-bottom: 10px;
 }
 
 .prog-card h3 {
@@ -785,7 +785,7 @@ ul {
 /* ===== Approach Section ===== */
 .approach-section {
   background: var(--bg-sage);
-  padding: 48px 0;
+  padding: 36px 0;
 }
 
 .approach-inner {
@@ -1354,7 +1354,7 @@ ul {
 /* ===== CTA Section ===== */
 .cta-section {
   background: linear-gradient(160deg, #2d5038 0%, #3a6348 25%, #4a7c59 50%, #3a6348 75%, #2d5038 100%);
-  padding: 50px 0;
+  padding: 36px 0;
   position: relative;
   overflow: hidden;
 }
