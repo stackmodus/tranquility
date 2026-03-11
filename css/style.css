@@ -270,6 +270,11 @@ ul {
   filter: drop-shadow(0 2px 4px rgba(74, 124, 89, 0.3));
 }
 
+.logo-img {
+  height: 42px;
+  width: auto;
+}
+
 .logo-text {
   font-family: 'Montserrat', sans-serif;
   font-size: 1.1rem;
