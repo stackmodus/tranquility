@@ -995,6 +995,30 @@ ul {
   color: var(--text-muted);
 }
 
+/* ===== Programme List ===== */
+.programme-list {
+  list-style: none;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.programme-list li {
+  padding: 0.75rem 0;
+  padding-left: 1.5rem;
+  position: relative;
+  font-size: 1.1rem;
+  border-bottom: 1px solid rgba(74, 124, 89, 0.15);
+}
+
+.programme-list li::before {
+  content: '\2713';
+  position: absolute;
+  left: 0;
+  color: var(--primary);
+  font-weight: 700;
+}
+
 /* ===== Word of Hope Section ===== */
 .word-of-hope {
   background: var(--bg-sage);
