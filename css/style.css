@@ -531,7 +531,7 @@ ul {
 
 /* ===== Sections ===== */
 .section {
-  padding: 50px 0;
+  padding: 48px 0;
 }
 
 .section-header {
@@ -550,7 +550,7 @@ ul {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  margin-bottom: 16px;
+  margin-bottom: 12px;
 }
 
 .section-header h2 {
@@ -566,6 +566,320 @@ ul {
   margin: 0 auto;
   font-weight: 300;
   line-height: 1.8;
+}
+
+/* ===== About Section ===== */
+.about-section {
+  background: linear-gradient(180deg, #e8f5e9 0%, #f8faf8 100%);
+  text-align: center;
+}
+
+.about-section h2 {
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  margin-bottom: 18px;
+  color: var(--text);
+}
+
+.about-text {
+  max-width: 740px;
+  margin: 0 auto;
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  line-height: 1.9;
+  font-weight: 300;
+}
+
+/* ===== Verse Section ===== */
+.verse-section {
+  background: var(--bg);
+  padding: 56px 0;
+}
+
+.verse-block {
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  padding: 40px 36px;
+  background: linear-gradient(135deg, rgba(232, 245, 233, 0.5), rgba(201, 168, 76, 0.06));
+  border-radius: var(--radius);
+  border: 1px solid rgba(201, 168, 76, 0.2);
+}
+
+.verse-label {
+  display: inline-block;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: var(--gold);
+  margin-bottom: 20px;
+}
+
+.verse-quote {
+  font-size: 1.2rem;
+  font-style: italic;
+  line-height: 1.85;
+  color: var(--text);
+  margin: 0;
+  font-weight: 300;
+}
+
+.verse-cite {
+  display: block;
+  margin-top: 16px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.85rem;
+  font-style: normal;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.verse-reflection {
+  margin-top: 18px;
+  font-size: 1rem;
+  color: var(--text-secondary);
+  font-weight: 400;
+  line-height: 1.7;
+}
+
+/* ===== Values Section (We Support + Mission/Vision/Motto) ===== */
+.values-section {
+  background: var(--bg-sage);
+  padding: 48px 0;
+}
+
+.values-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 60px;
+  align-items: start;
+}
+
+.values-heading {
+  font-size: 1.3rem;
+  margin-bottom: 18px;
+  color: var(--text);
+  position: relative;
+  padding-bottom: 10px;
+}
+
+.values-heading::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 36px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary), var(--gold));
+  border-radius: 2px;
+}
+
+.support-list {
+  list-style: none;
+  padding: 0;
+}
+
+.support-list li {
+  padding: 10px 0 10px 24px;
+  position: relative;
+  font-size: 1rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.support-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 18px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--primary);
+  opacity: 0.6;
+}
+
+.mvm-item {
+  margin-bottom: 20px;
+}
+
+.mvm-item:last-child {
+  margin-bottom: 0;
+}
+
+.mvm-label {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--primary-dark);
+  margin-bottom: 6px;
+}
+
+.mvm-item p {
+  color: var(--text-secondary);
+  line-height: 1.75;
+  font-size: 0.95rem;
+}
+
+.mvm-motto p {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--gold);
+  font-style: italic;
+}
+
+/* ===== Programmes Section ===== */
+.programmes-section {
+  background: var(--bg);
+  padding: 48px 0;
+}
+
+.programmes-heading {
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.programmes-intro {
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: 1rem;
+  margin-bottom: 28px;
+  font-weight: 300;
+}
+
+.programmes-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px 48px;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.clean-list {
+  list-style: none;
+  padding: 0;
+}
+
+.clean-list li {
+  padding: 9px 0 9px 28px;
+  position: relative;
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  border-bottom: 1px solid rgba(74, 124, 89, 0.08);
+}
+
+.clean-list li:last-child {
+  border-bottom: none;
+}
+
+.clean-list li::before {
+  content: '\2713';
+  position: absolute;
+  left: 0;
+  top: 9px;
+  color: var(--primary);
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+
+/* ===== Approach Section ===== */
+.approach-section {
+  background: var(--bg-sage);
+  padding: 48px 0;
+}
+
+.approach-inner {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 48px;
+  align-items: center;
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.approach-section h2 {
+  font-size: clamp(1.6rem, 3vw, 2rem);
+  margin-bottom: 10px;
+}
+
+.approach-intro {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  margin-bottom: 24px;
+  font-weight: 300;
+  line-height: 1.7;
+}
+
+.approach-pillars {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.pillar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text);
+  padding: 12px 16px;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(74, 124, 89, 0.1);
+}
+
+.pillar-icon {
+  color: var(--primary);
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.approach-goal {
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  border-radius: var(--radius);
+  padding: 32px 28px;
+  text-align: center;
+}
+
+.approach-goal p {
+  color: rgba(255, 255, 255, 0.95);
+  font-size: 1.1rem;
+  font-weight: 400;
+  line-height: 1.7;
+  font-style: italic;
+}
+
+/* ===== CTA Contact Line ===== */
+.cta-contact-line {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 28px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.95);
+  letter-spacing: 0.5px;
+}
+
+.cta-divider {
+  opacity: 0.5;
+}
+
+.cta-location {
+  font-weight: 400;
+  font-size: 0.95rem;
+  opacity: 0.8;
 }
 
 /* ===== Image Banner ===== */
@@ -635,8 +949,8 @@ ul {
   box-shadow: 0 0 30px rgba(74, 124, 89, 0.3);
 }
 
-/* ===== About ===== */
-.about {
+/* ===== About (legacy — kept for inner pages if needed) ===== */
+.about-legacy {
   background: linear-gradient(180deg, #e8f5e9 0%, #f0f7f0 50%, #f8faf8 100%);
 }
 
@@ -995,7 +1309,7 @@ ul {
   color: var(--text-muted);
 }
 
-/* ===== Content Blocks ===== */
+/* ===== Content Blocks (legacy) ===== */
 .content-block {
   max-width: 700px;
   margin: 0 auto 1.5rem;
@@ -1019,18 +1333,7 @@ ul {
   line-height: 1.7;
 }
 
-/* ===== Goal Text ===== */
-.goal-text {
-  font-size: 1.15rem;
-  font-weight: 600;
-  color: var(--primary-dark);
-  text-align: center;
-  max-width: 700px;
-  margin: 2rem auto 0;
-  line-height: 1.6;
-}
-
-/* ===== Programme List ===== */
+/* ===== Programme List (legacy) ===== */
 .programme-list {
   list-style: none;
   max-width: 600px;
@@ -1052,35 +1355,6 @@ ul {
   left: 0;
   color: var(--primary);
   font-weight: 700;
-}
-
-/* ===== Word of Hope Section ===== */
-.word-of-hope {
-  background: var(--bg-sage);
-  text-align: center;
-}
-
-.hope-verse {
-  max-width: 700px;
-  margin: 0 auto;
-  font-size: 1.25rem;
-  font-style: italic;
-  line-height: 1.8;
-  color: var(--text);
-  padding: 2rem;
-  border-left: 4px solid var(--gold);
-  background: var(--white);
-  border-radius: var(--radius-sm);
-  box-shadow: var(--shadow);
-}
-
-.hope-verse cite {
-  display: block;
-  margin-top: 1rem;
-  font-size: 1rem;
-  font-style: normal;
-  color: var(--primary);
-  font-weight: 600;
 }
 
 /* ===== CTA Section ===== */
@@ -1365,6 +1639,16 @@ ul {
   .team-grid {
     grid-template-columns: repeat(2, 1fr);
   }
+
+  .values-grid {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  .approach-inner {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
 }
 
 @media (max-width: 968px) {
@@ -1415,7 +1699,7 @@ ul {
   }
 
   .section {
-    padding: 40px 0;
+    padding: 36px 0;
   }
 
   .hero-content {
@@ -1466,6 +1750,38 @@ ul {
 
   .hero-buttons {
     margin-bottom: 50px;
+  }
+
+  /* New section responsive */
+  .programmes-columns {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .approach-inner {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .approach-pillars {
+    grid-template-columns: 1fr;
+  }
+
+  .verse-block {
+    padding: 28px 20px;
+  }
+
+  .verse-quote {
+    font-size: 1.05rem;
+  }
+
+  .values-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .cta-contact-line {
+    font-size: 0.95rem;
   }
 }
 
