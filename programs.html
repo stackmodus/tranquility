@@ -14,7 +14,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=14">
+  <link rel="stylesheet" href="css/style.css?v=15">
 </head>
 <body>
   <div class="page-transition" id="pageTransition"></div>
@@ -52,70 +52,91 @@
   <!-- Programs Section -->
   <section class="section why-us" id="programs">
     <div class="container">
-      <div class="why-grid">
-        <div class="why-item">
-          <div class="why-number">01</div>
-          <div>
-            <h3>Medical and Psychological Assessment</h3>
-            <p>Comprehensive medical and psychological evaluations to understand each client's unique needs and develop a personalised treatment plan.</p>
+      <div class="tab-nav" id="programTabs">
+        <button class="tab-btn active" data-page="1">1</button>
+        <button class="tab-btn" data-page="2">2</button>
+        <button class="tab-btn" data-page="3">3</button>
+      </div>
+      <div class="tab-pages" id="programPages">
+        <div class="tab-page active" data-page="1">
+          <div class="why-grid">
+            <div class="why-item">
+              <div class="why-number">01</div>
+              <div>
+                <h3>Medical and Psychological Assessment</h3>
+                <p>Comprehensive medical and psychological evaluations to understand each client's unique needs and develop a personalised treatment plan.</p>
+              </div>
+            </div>
+            <div class="why-item">
+              <div class="why-number">02</div>
+              <div>
+                <h3>Individual Counseling and Therapy</h3>
+                <p>One-on-one sessions with certified counsellors using evidence-based approaches including CBT and motivational interviewing.</p>
+              </div>
+            </div>
+            <div class="why-item">
+              <div class="why-number">03</div>
+              <div>
+                <h3>Group Therapy and Support Meetings (AA/NA)</h3>
+                <p>Structured group sessions and 12-step support meetings that build community and shared accountability in recovery.</p>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="why-item">
-          <div class="why-number">02</div>
-          <div>
-            <h3>Individual Counseling and Therapy</h3>
-            <p>One-on-one sessions with certified counsellors using evidence-based approaches including CBT and motivational interviewing.</p>
+        <div class="tab-page" data-page="2">
+          <div class="why-grid">
+            <div class="why-item">
+              <div class="why-number">04</div>
+              <div>
+                <h3>Psycho-education on Addiction and Recovery</h3>
+                <p>Educational sessions that help clients understand the science of addiction, triggers, and the path to lasting recovery.</p>
+              </div>
+            </div>
+            <div class="why-item">
+              <div class="why-number">05</div>
+              <div>
+                <h3>Spiritual Nourishment and Bible Study</h3>
+                <p>Faith-based support through prayer, Bible study, and spiritual counselling to nurture inner healing and purpose.</p>
+              </div>
+            </div>
+            <div class="why-item">
+              <div class="why-number">06</div>
+              <div>
+                <h3>Life Skills and Personal Development</h3>
+                <p>Training in essential life skills including financial literacy, communication, and goal-setting for a successful reintegration into society.</p>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="why-item">
-          <div class="why-number">03</div>
-          <div>
-            <h3>Group Therapy and Support Meetings (AA/NA)</h3>
-            <p>Structured group sessions and 12-step support meetings that build community and shared accountability in recovery.</p>
+        <div class="tab-page" data-page="3">
+          <div class="why-grid">
+            <div class="why-item">
+              <div class="why-number">07</div>
+              <div>
+                <h3>Family Counseling and Reconciliation</h3>
+                <p>Guided family sessions that rebuild trust, improve communication, and create a supportive home environment for recovery.</p>
+              </div>
+            </div>
+            <div class="why-item">
+              <div class="why-number">08</div>
+              <div>
+                <h3>Relapse Prevention Training</h3>
+                <p>Practical strategies and coping skills to identify triggers, manage cravings, and maintain long-term sobriety.</p>
+              </div>
+            </div>
+            <div class="why-item">
+              <div class="why-number">09</div>
+              <div>
+                <h3>Recreational and Therapeutic Activities</h3>
+                <p>Sports, art therapy, nature walks, and other activities that promote physical wellness and emotional healing.</p>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="why-item">
-          <div class="why-number">04</div>
-          <div>
-            <h3>Psycho-education on Addiction and Recovery</h3>
-            <p>Educational sessions that help clients understand the science of addiction, triggers, and the path to lasting recovery.</p>
-          </div>
-        </div>
-        <div class="why-item">
-          <div class="why-number">05</div>
-          <div>
-            <h3>Spiritual Nourishment and Bible Study</h3>
-            <p>Faith-based support through prayer, Bible study, and spiritual counselling to nurture inner healing and purpose.</p>
-          </div>
-        </div>
-        <div class="why-item">
-          <div class="why-number">06</div>
-          <div>
-            <h3>Life Skills and Personal Development</h3>
-            <p>Training in essential life skills including financial literacy, communication, and goal-setting for a successful reintegration into society.</p>
-          </div>
-        </div>
-        <div class="why-item">
-          <div class="why-number">07</div>
-          <div>
-            <h3>Family Counseling and Reconciliation</h3>
-            <p>Guided family sessions that rebuild trust, improve communication, and create a supportive home environment for recovery.</p>
-          </div>
-        </div>
-        <div class="why-item">
-          <div class="why-number">08</div>
-          <div>
-            <h3>Relapse Prevention Training</h3>
-            <p>Practical strategies and coping skills to identify triggers, manage cravings, and maintain long-term sobriety.</p>
-          </div>
-        </div>
-        <div class="why-item">
-          <div class="why-number">09</div>
-          <div>
-            <h3>Recreational and Therapeutic Activities</h3>
-            <p>Sports, art therapy, nature walks, and other activities that promote physical wellness and emotional healing.</p>
-          </div>
-        </div>
+      </div>
+      <div class="tab-nav tab-nav-bottom" id="programTabsBottom">
+        <button class="tab-arrow" data-dir="prev">&larr; Prev</button>
+        <button class="tab-arrow" data-dir="next">Next &rarr;</button>
       </div>
     </div>
   </section>
@@ -207,7 +228,7 @@
     </a>
   </nav>
 
-  <script src="js/main.js?v=14"></script>
+  <script src="js/main.js?v=15"></script>
   <script>
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('/service-worker.js');

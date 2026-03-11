@@ -1,6 +1,6 @@
 // Shelter of Hope PWA Service Worker
 // Strategy: Network-first with cache fallback (avoids stale content issues)
-const CACHE_VERSION = 'soh-v1';
+const CACHE_VERSION = 'soh-v2';
 const OFFLINE_URL = '/index.html';
 
 // Assets to pre-cache for offline support
@@ -11,8 +11,8 @@ const PRECACHE_ASSETS = [
   '/why-us.html',
   '/testimonials.html',
   '/contact.html',
-  '/css/style.css?v=14',
-  '/js/main.js?v=14',
+  '/css/style.css?v=15',
+  '/js/main.js?v=15',
   '/images/logo.png',
   '/manifest.json'
 ];

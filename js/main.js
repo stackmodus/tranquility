@@ -575,6 +575,62 @@ function showFormMessage(message, type) {
   setTimeout(() => msgEl.remove(), 6000);
 }
 
+// ===== Tab Pagination =====
+document.querySelectorAll('.tab-pages').forEach(function(container) {
+  var section = container.closest('section') || container.parentElement;
+  var pages = container.querySelectorAll('.tab-page');
+  var tabNavs = section.querySelectorAll('.tab-nav');
+  var totalPages = pages.length;
+
+  function showPage(num) {
+    pages.forEach(function(p) { p.classList.remove('active'); });
+    var target = container.querySelector('.tab-page[data-page="' + num + '"]');
+    if (target) target.classList.add('active');
+
+    // Update tab buttons
+    tabNavs.forEach(function(nav) {
+      nav.querySelectorAll('.tab-btn').forEach(function(btn) {
+        btn.classList.toggle('active', btn.getAttribute('data-page') === String(num));
+      });
+      // Update arrows
+      nav.querySelectorAll('.tab-arrow').forEach(function(arrow) {
+        if (arrow.getAttribute('data-dir') === 'prev') {
+          arrow.disabled = (num <= 1);
+        } else {
+          arrow.disabled = (num >= totalPages);
+        }
+      });
+    });
+
+    // Scroll section into view
+    section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  // Initial arrow state
+  tabNavs.forEach(function(nav) {
+    nav.querySelectorAll('.tab-arrow').forEach(function(arrow) {
+      if (arrow.getAttribute('data-dir') === 'prev') arrow.disabled = true;
+    });
+  });
+
+  // Click handlers
+  tabNavs.forEach(function(nav) {
+    nav.addEventListener('click', function(e) {
+      var btn = e.target.closest('.tab-btn');
+      var arrow = e.target.closest('.tab-arrow');
+      if (btn) {
+        showPage(parseInt(btn.getAttribute('data-page')));
+      } else if (arrow && !arrow.disabled) {
+        var current = container.querySelector('.tab-page.active');
+        var currentNum = parseInt(current.getAttribute('data-page'));
+        var dir = arrow.getAttribute('data-dir');
+        var next = dir === 'next' ? currentNum + 1 : currentNum - 1;
+        if (next >= 1 && next <= totalPages) showPage(next);
+      }
+    });
+  });
+});
+
 // ===== Active Navigation Highlight =====
 const sections = document.querySelectorAll('section[id]');
 
