@@ -734,58 +734,47 @@ ul {
 
 /* ===== Programmes Section ===== */
 .programmes-section {
-  background: var(--bg);
+  background: var(--bg-cream);
   padding: 48px 0;
 }
 
-.programmes-heading {
-  font-size: clamp(1.6rem, 3vw, 2.2rem);
-  margin-bottom: 10px;
-  text-align: center;
-}
-
-.programmes-intro {
-  text-align: center;
-  color: var(--text-secondary);
-  font-size: 1rem;
-  margin-bottom: 28px;
-  font-weight: 300;
-}
-
-.programmes-columns {
+.prog-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px 48px;
-  max-width: 720px;
-  margin: 0 auto;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
 }
 
-.clean-list {
-  list-style: none;
-  padding: 0;
+.prog-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 28px 24px;
+  border: 1px solid rgba(74, 124, 89, 0.08);
+  transition: box-shadow var(--transition), transform var(--transition);
 }
 
-.clean-list li {
-  padding: 9px 0 9px 28px;
-  position: relative;
+.prog-card:hover {
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-2px);
+}
+
+.prog-icon {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-sage);
+  border-radius: var(--radius-sm);
+  font-size: 1.3rem;
+  margin-bottom: 16px;
+}
+
+.prog-card h3 {
+  font-family: 'Montserrat', sans-serif;
   font-size: 0.95rem;
-  color: var(--text-secondary);
-  line-height: 1.5;
-  border-bottom: 1px solid rgba(74, 124, 89, 0.08);
-}
-
-.clean-list li:last-child {
-  border-bottom: none;
-}
-
-.clean-list li::before {
-  content: '\2713';
-  position: absolute;
-  left: 0;
-  top: 9px;
-  color: var(--primary);
-  font-weight: 700;
-  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.4;
 }
 
 /* ===== Approach Section ===== */
@@ -1649,6 +1638,10 @@ ul {
     grid-template-columns: 1fr;
     gap: 32px;
   }
+
+  .prog-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 @media (max-width: 968px) {
@@ -1753,9 +1746,8 @@ ul {
   }
 
   /* New section responsive */
-  .programmes-columns {
+  .prog-grid {
     grid-template-columns: 1fr;
-    gap: 0;
   }
 
   .approach-inner {
