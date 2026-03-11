@@ -995,6 +995,35 @@ ul {
   color: var(--text-muted);
 }
 
+/* ===== Word of Hope Section ===== */
+.word-of-hope {
+  background: var(--bg-sage);
+  text-align: center;
+}
+
+.hope-verse {
+  max-width: 700px;
+  margin: 0 auto;
+  font-size: 1.25rem;
+  font-style: italic;
+  line-height: 1.8;
+  color: var(--text);
+  padding: 2rem;
+  border-left: 4px solid var(--gold);
+  background: var(--white);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow);
+}
+
+.hope-verse cite {
+  display: block;
+  margin-top: 1rem;
+  font-size: 1rem;
+  font-style: normal;
+  color: var(--primary);
+  font-weight: 600;
+}
+
 /* ===== CTA Section ===== */
 .cta-section {
   background: linear-gradient(160deg, #2d5038 0%, #3a6348 25%, #4a7c59 50%, #3a6348 75%, #2d5038 100%);
