@@ -1698,6 +1698,15 @@ ul {
     display: none !important;
   }
 
+  /* Hide logo text on mobile, show only logo image */
+  .navbar .logo-text {
+    display: none;
+  }
+
+  .navbar .logo-img {
+    height: 48px;
+  }
+
   .section {
     padding: 36px 0;
   }
