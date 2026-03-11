@@ -1807,15 +1807,12 @@ ul {
 }
 
 .tab-btn {
-  width: 44px;
-  height: 44px;
+  width: 14px;
+  height: 14px;
   border-radius: 50%;
-  border: 2px solid rgba(74, 124, 89, 0.2);
+  border: 2px solid rgba(74, 124, 89, 0.3);
   background: rgba(255, 255, 255, 0.8);
-  font-family: 'Montserrat', sans-serif;
-  font-size: 0.85rem;
-  font-weight: 700;
-  color: var(--primary);
+  padding: 0;
   cursor: pointer;
   transition: all 0.3s ease;
   -webkit-tap-highlight-color: transparent;
@@ -1827,10 +1824,9 @@ ul {
 }
 
 .tab-btn.active {
-  background: linear-gradient(135deg, var(--primary), #5a9d6b);
-  color: var(--white);
+  background: var(--primary);
   border-color: var(--primary);
-  box-shadow: 0 4px 15px rgba(74, 124, 89, 0.3);
+  box-shadow: 0 2px 8px rgba(74, 124, 89, 0.3);
 }
 
 .tab-arrow {
