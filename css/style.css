@@ -995,6 +995,34 @@ ul {
   color: var(--text-muted);
 }
 
+/* ===== Centre Logo ===== */
+.centre-logo {
+  width: 160px;
+  height: auto;
+  margin: 0 auto 1.5rem;
+  display: block;
+}
+
+.location-tag {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--primary);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+/* ===== Goal Section ===== */
+.goal-text {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--primary-dark);
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
 /* ===== Programme List ===== */
 .programme-list {
   list-style: none;
