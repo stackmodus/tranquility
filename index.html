@@ -16,7 +16,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=8">
+  <link rel="stylesheet" href="css/style.css?v=9">
 </head>
 <body>
   <div class="page-transition" id="pageTransition"></div>
@@ -85,51 +85,6 @@
     </div>
   </header>
 
-  <!-- About Section -->
-  <section class="section about" id="about">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-tag">Who We Are</span>
-        <h2>A Place of Healing, Restoration and New Beginnings</h2>
-        <p class="section-intro">Shelter of Hope Rehabilitation Centre is a safe and supportive environment dedicated to helping individuals overcome drug and substance abuse. Our Centre provides compassionate care, professional counseling, spiritual guidance, and structured recovery programs designed to restore hope and transform lives. We believe that recovery is possible, and every person deserves a second chance to rebuild their life with dignity, purpose, and hope.</p>
-      </div>
-
-      <!-- Nature Image Banner -->
-      <div class="image-banner">
-        <div class="image-banner-item">
-          <img src="https://images.unsplash.com/photo-1586249149466-ab4d39822001?w=600&q=80&auto=format" alt="Green fields of Limuru, Kenya">
-          <span class="image-caption">The Green Heart of Kenya</span>
-        </div>
-        <div class="image-banner-item">
-          <img src="https://images.unsplash.com/photo-1759147833377-0345de4fb7eb?w=600&q=80&auto=format" alt="Tea plantation with scattered trees in Kenya">
-          <span class="image-caption">Peaceful Surroundings</span>
-        </div>
-        <div class="image-banner-item">
-          <img src="https://images.unsplash.com/photo-1756009481685-1513779372cf?w=600&q=80&auto=format" alt="Rolling green hills and tea plantations">
-          <span class="image-caption">A Place to Heal</span>
-        </div>
-      </div>
-
-      <div class="about-grid">
-        <div class="about-card">
-          <div class="about-icon">&#9829;</div>
-          <h3>Our Mission</h3>
-          <p>To provide holistic rehabilitation services that empower individuals struggling with drug and substance abuse to achieve lasting recovery, personal transformation, and reintegration into society.</p>
-        </div>
-        <div class="about-card">
-          <div class="about-icon">&#9733;</div>
-          <h3>Our Vision</h3>
-          <p>To be a leading rehabilitation centre that restores hope, rebuilds lives, and creates drug-free communities through healing, counseling, and spiritual support.</p>
-        </div>
-        <div class="about-card">
-          <div class="about-icon">&#10084;</div>
-          <h3>Our Motto</h3>
-          <p>"Choosing Life, Restoring Hope." Our goal is to help every client rediscover purpose, hope, and a healthy lifestyle free from addiction.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- A Word of Hope Section -->
   <section class="section word-of-hope">
     <div class="container">
@@ -144,8 +99,36 @@
     </div>
   </section>
 
+  <!-- About Section -->
+  <section class="section about" id="about">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Who We Are</span>
+        <h2>A Place of Healing, Restoration and New Beginnings</h2>
+        <p class="section-intro">Shelter of Hope Rehabilitation Centre is a safe and supportive environment dedicated to helping individuals overcome drug and substance abuse. Our Centre provides compassionate care, professional counseling, spiritual guidance, and structured recovery programs designed to restore hope and transform lives. We believe that recovery is possible, and every person deserves a second chance to rebuild their life with dignity, purpose, and hope.</p>
+      </div>
+      <div class="about-grid">
+        <div class="about-card">
+          <div class="about-icon">&#9829;</div>
+          <h3>Our Mission</h3>
+          <p>To provide holistic rehabilitation services that empower individuals struggling with drug and substance abuse to achieve lasting recovery, personal transformation, and reintegration into society.</p>
+        </div>
+        <div class="about-card">
+          <div class="about-icon">&#9733;</div>
+          <h3>Our Vision</h3>
+          <p>To be a leading rehabilitation centre that restores hope, rebuilds lives, and creates drug-free communities through healing, counseling, and spiritual support.</p>
+        </div>
+        <div class="about-card">
+          <div class="about-icon">&#10084;</div>
+          <h3>Our Motto</h3>
+          <p>&ldquo;Choosing Life, Restoring Hope.&rdquo;</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- We Support Section -->
-  <section class="section we-support">
+  <section class="section we-support" style="background: var(--bg-sage);">
     <div class="container">
       <div class="section-header">
         <span class="section-tag">Who We Help</span>
@@ -183,22 +166,18 @@
         <div class="about-card">
           <div class="about-icon">&#128154;</div>
           <h3>Physical Healing</h3>
-          <p>Medical assessment, detoxification support, and ongoing health monitoring to restore the body.</p>
         </div>
         <div class="about-card">
           <div class="about-icon">&#128156;</div>
           <h3>Emotional Restoration</h3>
-          <p>Individual counseling, trauma-informed care, and therapeutic support to heal emotional wounds.</p>
         </div>
         <div class="about-card">
           <div class="about-icon">&#129504;</div>
           <h3>Mental Wellness</h3>
-          <p>Cognitive behavioural therapy, psycho-education, and life skills training for lasting mental health.</p>
         </div>
         <div class="about-card">
           <div class="about-icon">&#10024;</div>
           <h3>Spiritual Growth</h3>
-          <p>Bible study, spiritual counseling, prayer, and faith-based support to nurture inner strength.</p>
         </div>
       </div>
       <div class="section-header" style="margin-top: 2rem;">
@@ -294,7 +273,7 @@
     </a>
   </nav>
 
-  <script src="js/main.js?v=8"></script>
+  <script src="js/main.js?v=9"></script>
   <script>
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('/sw.js').then(function(reg) {
