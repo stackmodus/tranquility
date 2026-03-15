@@ -1,4 +1,4 @@
-// Shelter of Hope PWA Service Worker
+// Tranquility Rehabilitation Centre PWA Service Worker
 // Strategy: Network-first with cache fallback (avoids stale content issues)
 const CACHE_VERSION = 'soh-v2';
 const OFFLINE_URL = '/index.html';

@@ -38,10 +38,10 @@
   <path d="M95,165 Q82,155 78,165 Q82,175 95,170Z" fill="#2ecc71"/>
   <path d="M145,165 Q158,155 162,165 Q158,175 145,170Z" fill="#2ecc71"/>
 
-  <!-- Text: Tranquility of Hope -->
-  <text x="120" y="220" text-anchor="middle" font-family="'Montserrat', 'Source Sans 3', sans-serif" font-size="15" fill="#4a7c59" font-style="italic">Tranquility of Hope</text>
+  <!-- Text: Tranquility -->
+  <text x="120" y="220" text-anchor="middle" font-family="'Montserrat', 'Source Sans 3', sans-serif" font-size="15" fill="#4a7c59" font-style="italic">Tranquility</text>
 
-  <!-- Text: Shelter of Hope -->
-  <text x="120" y="242" text-anchor="middle" font-family="'Montserrat', 'Source Sans 3', sans-serif" font-size="12" font-weight="700" fill="#333" letter-spacing="1.5">SHELTER OF HOPE</text>
-  <text x="120" y="256" text-anchor="middle" font-family="'Montserrat', 'Source Sans 3', sans-serif" font-size="10" font-weight="700" fill="#333" letter-spacing="1.5">REHABILITATION CENTRE</text>
+  <!-- Text: Tranquility Rehab Centre -->
+  <text x="120" y="242" text-anchor="middle" font-family="'Montserrat', 'Source Sans 3', sans-serif" font-size="12" font-weight="700" fill="#333" letter-spacing="1.5">TRANQUILITY</text>
+  <text x="120" y="256" text-anchor="middle" font-family="'Montserrat', 'Source Sans 3', sans-serif" font-size="10" font-weight="700" fill="#333" letter-spacing="1.5">REHAB CENTRE</text>
 </svg>
